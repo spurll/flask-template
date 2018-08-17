@@ -59,5 +59,7 @@ Written by Gem Newman. [Website](http://spurll.com) | [GitHub](https://github.co
 
 This work is licensed under Creative Commons [BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
 
+JQuery included under the [MIT "Expat" License](https://opensource.org/licenses/MIT).
+
 Remember: [GitHub is not my CV](https://blog.jcoglan.com/2013/11/15/why-github-is-not-your-cv/).
 

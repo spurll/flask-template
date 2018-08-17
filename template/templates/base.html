@@ -19,6 +19,12 @@
 			});
 
 			$(window).resize(function() {
+				resizeContent();
+				resizeBuffer();
+			});
+
+			$(window).on('orientationchange', function() {
+				resizeContent();
 				resizeBuffer();
 			});
 
@@ -28,11 +34,17 @@
 			}
 
 			function resizeContent() {
-				if ($(window).width() < 500) {
+				if ($(window).width() < 700) {
 					// Moves and resizes the links and login information information on a smaller screen.
-					$('#links').css({'width': 'auto', 'margin': 'auto', 'float': 'none', 'text-align': 'center', 'padding': '2px'});
-					$('#user').css({'width': 'auto', 'margin': 'auto', 'float': 'none', 'text-align': 'center', 'padding': '2px'});
-					$('#title').css({'padding': '2px'});
+					$('#links').addClass('small-screen');
+					$('#user').addClass('small-screen');
+					$('#title').addClass('small-screen');
+				}
+				else {
+					// Moves and resizes the links and login information information on a bigger (or horizontal) screen.
+					$('#links').removeClass('small-screen');
+					$('#user').removeClass('small-screen');
+					$('#title').removeClass('small-screen');
 				}
 			}
 		</script>

@@ -77,6 +77,14 @@ tfoot { font-weight: bold; font-variant: small-caps; }
 	padding-bottom: 10px;
 }
 
+.small-screen {
+	width: auto;
+	margin: auto;
+	float: none;
+	text-align: center;
+	padding: 2px;
+}
+
 .messages { font-style: italic; text-align: center; }
 .wide { width: 60%; top: 0px; }
 .narrow { width: 40%; top: 0px; }
