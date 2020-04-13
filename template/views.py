@@ -9,9 +9,8 @@ from template.authenticate import authenticate
 
 
 @app.route('/')
-@app.route('/index')
 def index():
-    return redirect(url_for("view"))
+    return redirect(url_for('view'))
 
 
 @app.route('/view')
@@ -29,7 +28,11 @@ def view_objects():
         flash("You don't have any objects.")
 
     return render_template(
-        "view.html", title="View", user=user, links=None, form=form,
+        "view.html",
+        title="View",
+        user=user,
+        links=None,
+        form=form,
         objects=objects
     )
 
@@ -45,14 +48,14 @@ def login():
     form = LoginForm()
 
     if request.method == 'GET':
-        return render_template('login.html', title="Log In", form=form)
+        return render_template('login.html', title='Log In', form=form)
 
     if form.validate_on_submit():
-        user = authenticate(form.username.data, form.password.data)
+        user, message = authenticate(form.username.data, form.password.data)
 
         if not user:
-            flash('Login failed.')
-            return render_template('login.html', title="Log In", form=form)
+            flash('Login failed: {}.'.format(message))
+            return render_template('login.html', title='Log In', form=form)
 
         if user and user.is_authenticated:
             db_user = User.query.get(user.id)
@@ -64,7 +67,7 @@ def login():
 
             return redirect(request.args.get('next') or url_for('index'))
 
-    return render_template('login.html', title="Log In", form=form)
+    return render_template('login.html', title='Log In', form=form)
 
 
 @app.route('/logout')
